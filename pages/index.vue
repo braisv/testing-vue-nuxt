@@ -34,6 +34,12 @@ import Logo from '~/components/Logo.vue'
 export default {
   components: {
     Logo
+  },
+  head: {
+    title: 'Testing Nuxt',
+    meta: [
+      { hid: 'description', name: 'description', content: 'This is the description' }
+    ]
   }
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div class="container my-5">
     <h1>Vuex</h1>
-    <form @submit.prevent="addTask(task)">
+    <form block @submit.prevent="addTask(task)">
         <input type="text" v-model="task" class="form-control mb-2">
         <b-button type="submit">+</b-button>
     </form>
@@ -9,8 +9,8 @@
             <div class="card-body">
                 <nuxt-link :to="`/task/${n.id}`"><h2>{{n.name}}</h2></nuxt-link>
                 <p>This is the task number {{tasks.indexOf(n)+1}}</p>
-                <b-button class="btn-sm btn-success pl-5 pr-5">Add</b-button>
-                <b-button class="btn-sm btn-danger float-right pl-5 pr-5">Delete</b-button>
+                <b-button class="btn-sm btn-warning pl-5 pr-5" :to="`/vuex/${n.id}`">Edit</b-button>
+                <b-button class="btn-sm btn-danger float-right pl-5 pr-5" @click="deleteTask(n)">Delete</b-button>
             </div>
         </div>
   </div>
@@ -29,7 +29,7 @@ export default {
         ...mapState(['tasks'])
     },
     methods: {
-        ...mapActions(['addTask'])
+        ...mapActions(['addTask', 'deleteTask'])
     }
 };
 </script>
